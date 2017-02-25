@@ -29,6 +29,9 @@
 			currentBuzzObject.bind('timeupdate', function () {
 				$rootScope.$apply(function () {
 					SongPlayer.currentTime = currentBuzzObject.getTime();
+					if (SongPlayer.currentTime == currentAlbum.songs[getSongIndex(SongPlayer.currentSong)].duration) {
+						SongPlayer.next();
+					}
 				});
 			});
 			
@@ -150,7 +153,7 @@
 			}
 			SongPlayer.volume = volume;
 		};
-		
+
         return SongPlayer;
     }
     
